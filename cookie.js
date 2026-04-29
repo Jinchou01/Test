@@ -19,6 +19,14 @@ function getCookie(name) {
   return "";
 }
 
+function getText(path, fallback) {
+  if (typeof t === "function") {
+    return t(path);
+  }
+
+  return fallback;
+}
+
 function createBanner() {
   const appContainer = document.querySelector(".budget-container");
 
@@ -36,16 +44,16 @@ function createBanner() {
 
   banner.innerHTML = `
     <p>
-      ${t("cookie.message")}
+      ${getText("cookie.message", "We use cookies to improve your experience. Please read our")}
 
       <a href="privacy.html" target="_blank">
-        ${t("privacy.title")}
+        ${getText("privacy.title", "Privacy Policy")}
       </a>
     </p>
 
     <div class="cookie-buttons">
-      <button class="accept-btn">${t("cookie.accept")}</button>
-      <button class="reject-btn">${t("cookie.reject")}</button>
+      <button class="accept-btn">${getText("cookie.accept", "Accept All")}</button>
+      <button class="reject-btn">${getText("cookie.reject", "Reject")}</button>
     </div>
   `;
 
@@ -91,6 +99,7 @@ if (typeof module !== "undefined") {
   module.exports = {
     setCookie,
     getCookie,
-    createBanner
+    createBanner,
+    getText
   };
 }
