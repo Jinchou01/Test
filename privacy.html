@@ -96,22 +96,22 @@
   transform: translateY(-1px);
 }
 
-/* 点击 */
+/* 鐐瑰嚮 */
 .lang-switch button:active {
   transform: scale(0.96);
 }
   </style>
 
-  <!-- ✅ 引入 i18n -->
+  <!-- 鉁� 寮曞叆 i18n -->
   <script src="i18n.js"></script>
 
 </head>
 <body>
 
-  <!-- 🌐 语言切换按钮 -->
+  <!-- 馃寪 璇█鍒囨崲鎸夐挳 -->
   <div class="lang-switch">
     <button onclick="setLanguage('en')">EN</button>
-    <button onclick="setLanguage('zh')">中文</button>
+    <button onclick="setLanguage('zh')">涓枃</button>
   </div>
 
   <div class="container">
@@ -133,7 +133,7 @@
     <a href="index.html" class="back-link" id="back"></a>
   </div>
 
-  <!-- ✅ 动态填充文本 -->
+  <!-- 鉁� 鍔ㄦ€佸～鍏呮枃鏈� -->
   <script>
     function renderText() {
       document.getElementById("page-title").innerText = t("privacy.title");
