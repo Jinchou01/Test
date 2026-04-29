@@ -281,14 +281,15 @@ input[type="number"] {
   cursor: pointer;
 }
 
+/* 修复后 */
 .budget-dashboard #expense ul {
   width: 360px;
-  min-height: 285px;
+  height: 270px;        /* 固定高度，与 #all ul 保持一致 */
   list-style: none;
   margin: 0;
   padding: 0;
   margin-top: 20px;
-  overflow-x: auto;
+  overflow-y: auto;     /* 垂直方向可滚动 */
 }
 
 .budget-dashboard #expense ul.list li {
@@ -384,14 +385,15 @@ input[type="number"] {
   cursor: pointer;
 }
 
+/* 修复后 */
 .budget-dashboard #income ul {
   width: 360px;
-  height: auto;
+  height: 270px;        /* 固定高度，与 #all ul 保持一致 */
   list-style: none;
   margin: 0;
   padding: 0;
   margin-top: 20px;
-  overflow-x: auto;
+  overflow-y: auto;     /* 垂直方向可滚动 */
 }
 
 .budget-dashboard #income ul.list li {
@@ -447,6 +449,7 @@ input[type="number"] {
   border: 0;
 }
 
+/* 鍥炬爣鎸夐挳鏍峰紡 */
 .btn-icon {
   width: 20px;
   height: 20px;
@@ -457,14 +460,17 @@ input[type="number"] {
   background-size: contain;
 }
 
+/* 缂栬緫鎸夐挳 */
 #edit {
   background-image: url("icon/edit.png");
 }
 
+/* 鍒犻櫎鎸夐挳 */
 #delete {
   background-image: url("icon/trash.png");
 }
 
+/* 閿洏鐒︾偣鏍峰紡锛堝繀椤伙紒Tab 閿彲瑙侊級 */
 .btn-icon:focus {
   outline: 2px solid #ffffff !important;
   outline-offset: 2px !important;
