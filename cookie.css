@@ -1,4 +1,4 @@
-/* Cookie 遮罩层：阻止用户点击后面的网站内容，但允许语言切换按钮操作 */
+
 .cookie-overlay {
   position: fixed;
   top: 0;
@@ -12,7 +12,7 @@
   z-index: 1500;
 }
 
-/* Cookie 弹窗：宽度和 left 由 cookie.js 自动对齐紫色 app */
+
 .cookie-banner {
   position: fixed;
   bottom: 20px;
@@ -31,7 +31,7 @@
   font-family: Arial, sans-serif;
 }
 
-/* 文本 */
+
 .cookie-banner p {
   margin: 0 0 15px;
   color: #222;
@@ -39,13 +39,13 @@
   line-height: 1.5;
 }
 
-/* 按钮区域 */
+
 .cookie-buttons {
   display: flex;
   gap: 10px;
 }
 
-/* 按钮 */
+
 .cookie-buttons button {
   flex: 1;
 
@@ -60,19 +60,19 @@
   font-family: Arial, sans-serif;
 }
 
-/* 接受按钮 */
+
 .accept-btn {
   background: #2E7D32;
   color: white;
 }
 
-/* 拒绝按钮 */
+
 .reject-btn {
   background: #666;
   color: white;
 }
 
-/* 链接 */
+
 .cookie-banner a {
   color: #0056B3;
   text-decoration: underline;
