@@ -35,6 +35,19 @@ const DELETE = "delete",
 ENTRY_LIST = JSON.parse(localStorage.getItem("entry_list")) || [];
 updateUI();
 
+function escapeHTML(text) {
+    if (typeof text !== 'string') return text;
+    const escapeMap = {
+        '&': '&amp;',
+        '<': '&lt;',
+        '>': '&gt;',
+        '"': '&quot;',
+        "'": '&#x27;',
+        '/': '&#x2F;'
+    };
+    return text.replace(/[&<>"'/]/g, char => escapeMap[char]);
+}
+
 //EVENT LISTENERS
 expenseBtn.addEventListener("click", function () {
   show(expenseEl);
@@ -149,7 +162,7 @@ function updateUI() {
 
 function showEntry(list, type, title, amount, id) {
   const entry = `<li id="${id}" class="${type}">
-                    <div class="entry">${title} : $${amount}</div>
+                    <div class="entry">${escapeHTML(title)} : $${amount}</div>
                     <div id="edit"></div>
                     <div id="delete"></div>
                   </li>`;
