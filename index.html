@@ -1,67 +1,164 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Budget Web App | javascript</title>
-    <link href="./style.css" rel="stylesheet" type="text/css" />
-  </head>
-  <body>
-    <div class="budget-container">
-      <div class="app-title">
-        <a href="">Budget<b>App</b></a>
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title id="page-title"></title>
+
+  <link href="./style.css" rel="stylesheet" />
+  <link rel="stylesheet" href="cookie.css">
+
+  <script src="i18n.js"></script>
+
+  <style>
+    .app-header {
+      position: relative;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .lang-switch {
+      position: absolute;
+      top: 20px;
+
+      /* 让按钮进入中间 app 的右上角 */
+      right: calc(50% - 170px);
+
+      z-index: 2000;
+      display: flex;
+      gap: 8px;
+    }
+
+    .lang-switch button {
+      width: 64px;
+      height: 34px;
+
+      border: none;
+      border-radius: 8px;
+
+      background: #f5f5f5;
+      color: #333;
+
+      font-size: 14px;
+      font-weight: 500;
+
+      cursor: pointer;
+      transition: all 0.25s ease;
+    }
+
+    .lang-switch button:hover {
+      background: #007BFF;
+      color: white;
+      transform: translateY(-1px);
+    }
+
+    .lang-switch button:active {
+      transform: scale(0.96);
+    }
+  </style>
+</head>
+
+<body>
+
+  <!-- 🌐 语言切换 + 应用标题 header -->
+  <header class="app-header">
+    <div class="lang-switch">
+      <button onclick="setLanguage('en')">EN</button>
+      <button onclick="setLanguage('zh')">中文</button>
+    </div>
+  </header>
+
+  <!-- 主内容区域，使用 <main> 提供 landmark，修复 Lighthouse 警告 -->
+  <main class="budget-container">
+    <div class="app-title">
+      <a href="" id="app-title"></a>
+    </div>
+
+    <div class="budget-header">
+      <div class="balance">
+        <div class="title" id="balance-title"></div>
+        <div class="value"><small>$</small>0</div>
       </div>
-      <div class="budget-header">
-        <div class="balance">
-          <div class="title">Balance</div>
-          <div class="value"><small>$</small>0</div>
+
+      <div class="account">
+        <div class="income">
+          <div class="title" id="income-title"></div>
+          <div class="income-total"><small>$</small>0</div>
         </div>
-        <div class="account">
-          <div class="income">
-            <div class="title">Income</div>
-            <div class="income-total"><small>$</small>0</div>
-          </div>
-          <div class="chart"></div>
-          <div class="outcome">
-            <div class="title">Outcome</div>
-            <div class="outcome-total"><small>$</small>0</div>
-          </div>
-        </div>
-      </div>
-      <div class="budget-dashboard">
-        <div class="dash-title">Dashboard</div>
-        <div class="toggle">
-          <div class="first-tab">Expenses</div>
-          <div class="second-tab">Income</div>
-          <div class="third-tab focus">All</div>
-        </div>
-        <div class="hide" id="expense">
-          <ul class="list"></ul>
-          <div class="input">
-            <label for="expense-title-input">Expense Title/支出事项名称</label>
-           <input type="text" id="expense-title-input" placeholder="Expense Title">
-           <label for="expense-amount-input">Amount/支出数字</label>
-           <input type="number" id="expense-amount-input" placeholder="$0">
-           <div class="add-expense"><img src="icon/plus.png" alt="+" /></div>
-          </div>
-        </div>
-        <div class="hide" id="income">
-          <ul class="list"></ul>
-          <div class="input">
-            <label for="income-title-input">Income Title/收入事项名称 </label>
-            <input type="text" id="income-title-input" placeholder="Income Title">
-            <label for="income-amount-input">Amount/收入数字</label>
-            <input type="number" id="income-amount-input" placeholder="$0">
-            <div class="add-income"><img src="icon/plus.png" alt="+" /></div>
-          </div>
-        </div>
-        <div id="all">
-          <ul class="list"></ul>
+
+        <div class="chart"></div>
+
+        <div class="outcome">
+          <div class="title" id="outcome-title"></div>
+          <div class="outcome-total"><small>$</small>0</div>
         </div>
       </div>
     </div>
-    <script src="./chart.js"></script>
-    <script src="./budget.js"></script>
-  </body>
+
+    <div class="budget-dashboard">
+      <div class="dash-title" id="dashboard-title"></div>
+
+      <div class="toggle">
+        <div class="first-tab" id="tab-expense"></div>
+        <div class="second-tab" id="tab-income"></div>
+        <div class="third-tab focus" id="tab-all"></div>
+      </div>
+
+      <div class="hide" id="expense">
+        <ul class="list"></ul>
+        <div class="input">
+           <label for="expense-title-input">Expense Title</label>
+           <input type="text" id="expense-title-input" placeholder="Expense Title">
+           <label for="expense-amount-input">Amount</label>
+           <input type="number" id="expense-amount-input" placeholder="$0">
+           <div class="add-expense"><img src="icon/plus.png" alt="+" /></div>
+        </div>
+      </div>
+
+      <div class="hide" id="income">
+        <ul class="list"></ul>
+        <div class="input">
+          <label for="income-title-input">Income Title/收入事项名称 </label>
+          <input type="text" id="income-title-input" placeholder="Income Title">
+          <label for="income-amount-input">Amount/收入数字</label>
+          <input type="number" id="income-amount-input" placeholder="$0">
+          <div class="add-income"><img src="icon/plus.png" alt="+" /></div>
+        </div>
+      </div>
+
+      <div id="all">
+        <ul class="list"></ul>
+      </div>
+    </div>
+  </main>
+
+  <script src="./chart.js"></script>
+  <script src="./budget.js"></script>
+  <script src="cookie.js"></script>
+
+  <!-- 🌐 文本渲染 -->
+  <script>
+    function renderText() {
+      document.getElementById("page-title").innerText = t("app.title");
+      document.getElementById("app-title").innerHTML = t("app.logo");
+
+      document.getElementById("balance-title").innerText = t("app.balance");
+      document.getElementById("income-title").innerText = t("app.income");
+      document.getElementById("outcome-title").innerText = t("app.outcome");
+
+      document.getElementById("dashboard-title").innerText = t("app.dashboard");
+
+      document.getElementById("tab-expense").innerText = t("app.expense");
+      document.getElementById("tab-income").innerText = t("app.income");
+      document.getElementById("tab-all").innerText = t("app.all");
+
+      document.getElementById("expense-title-input").placeholder = t("app.titlePlaceholder");
+      document.getElementById("income-title-input").placeholder = t("app.titlePlaceholder");
+    }
+
+    renderText();
+  </script>
+
+</body>
 </html>
