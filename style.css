@@ -435,3 +435,37 @@ input[type="number"] {
   background-size: 20px 20px;
   background-repeat: no-repeat;
 }
+
+.input label {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0,0,0,0);
+  border: 0;
+}
+
+.btn-icon {
+  width: 20px;
+  height: 20px;
+  background-color: transparent;
+  border: none;
+  cursor: pointer;
+  background-repeat: no-repeat;
+  background-size: contain;
+}
+
+#edit {
+  background-image: url("icon/edit.png");
+}
+
+#delete {
+  background-image: url("icon/trash.png");
+}
+
+.btn-icon:focus {
+  outline: 2px solid #ffffff !important;
+  outline-offset: 2px !important;
+}
