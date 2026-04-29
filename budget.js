@@ -17,7 +17,7 @@ let expenseTitle, expenseAmount, incomeTitle, incomeAmount;
 let _updateChart = null;
 
 // ============================================================
-// çº¯å·¥å…·å‡½æ•°
+// ´¿¹¤¾ßº¯Êı
 // ============================================================
 
 function escapeHTML(text) {
@@ -74,7 +74,7 @@ function clearElement(elements) {
 }
 
 // ============================================================
-// DOM ç›¸å…³å‡½æ•°
+// DOM Ïà¹Øº¯Êı
 // ============================================================
 
 function showEntry(list, type, title, amount, id) {
@@ -147,12 +147,12 @@ function updateUI() {
   try {
     localStorage.setItem("entry_list", JSON.stringify(ENTRY_LIST));
   } catch (e) {
-    // localStorage ä¸å¯ç”¨æ—¶é™é»˜å¤±è´¥
+    // localStorage ²»¿ÉÓÃÊ±¾²Ä¬Ê§°Ü
   }
 }
 
 // ============================================================
-// åˆå§‹åŒ–
+// ³õÊ¼»¯
 // ============================================================
 
 function init() {
@@ -239,7 +239,7 @@ if (typeof window !== "undefined" && typeof module === "undefined") {
 }
 
 // ============================================================
-// å¯¼å‡º
+// µ¼³ö
 // ============================================================
 if (typeof module !== "undefined" && module.exports) {
   module.exports = {
